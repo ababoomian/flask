@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-transform: capitalize;
+            color: white;
+        }
+        html{
+            width: fit-content;
+        }
+        body{
+            background-color: #101920;
+        }
+        .banner{
+            background-image: url("{{ url_for('static', filename='/img/bg.png') }}");
+            width: 100%;
+            /* background-color: rgb(40, 40, 99); */
+            max-height: 500px;
+            border-bottom: 1px solid #1EE7A6;
+            
+        }
+        .banner-content{
+            align-content: center;
+            text-align: center;
+        }
+        .banner-top img{
+            width: 300px;
+        }
+        .banner-top{
+            display: flex;
+            justify-content: space-around;
+        }
+        .banner-bottom{
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        .bottom-left,.bottom-right img{
+            width: 200px;
+        }
+        .bottom-center{
+            display: grid;
+            /* grid-template-rows: repeat(3fr,2); */
+            position: absolute;
+            bottom: 185px;
+            left: 50%;
+            transform: translateX(-50%);
+            justify-items:center;
+            align-items: end;
+        }
+        .bottom-center img{
+            position: absolute;
+            bottom: 35px;
+            width: 350px;
+        }
+        .bottom-center a{
+            background-color: #1EE7A6;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /*  card*/
+
+        .commision-block{
+            margin-top: 80px;
+            margin-bottom: 40px;
+            display: grid;
+            justify-items: center;
+            border-bottom: 1px solid #1EE7A6;
+            position: relative;
+
+        }
+
+        .commision-blog-float-icon{
+            width:250px;
+            position: absolute;
+            bottom: 0px;
+            right: 0;
+            transform: translateY(50%);
+        }
+        .commision-blog-float-icon-left{
+            width:250px;
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            transform: translateY(50%);
+        }
+
+        .commision-content{
+            display: grid;
+            gap: 10px;
+            align-content: center;
+            text-align: center;
+            width: 1100px;
+            margin-bottom: 20px;
+        }
+
+        .commision-cards{
+            display: grid;
+            padding: 10px 20px;
+            grid-template-columns: 6fr;
+            justify-items: center;
+            gap: 10px;
+            background-color: #15212C;
+            width: fit-content;
+            margin-bottom: 100px;
+            border-radius: 20px;
+        }
+
+        .commision-cards-icon
+        {
+            position: relative;
+            display: flex;
+            align-items: center;
+            /* width: 300px; */
+            justify-content: center;
+            flex-direction: column;
+        }
+        .commision-cards-icon img{
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0px);
+            /* transform: translateY(-50%); */
+            /* transform: translateX(-50%); */
+            width: 250px;
+            left: 0;
+            position: absolute;
+        }
+
+         @media (min-width: 600px) 
+        {
+            .commision-cards { grid-template-columns: repeat(3, 2fr); }
+        }
+        @media (min-width: 990px) 
+        {
+            .commision-cards { grid-template-columns: repeat(6, 1fr); }
+        }
+
+.revenue-card {
+            border-radius: 10px;
+            z-index: 2;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background-color: #101920;
+            display: flex;
+            max-width: 100%;
+            height: 350px;
+            flex-direction: column;
+            font: 500 15px/1.5 Roboto, sans-serif;
+            color: #fff;
+            padding: 11px 0;
+}
+.revenue-icon {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 60px;
+  align-self: center;
+}
+.revenue-details {
+  display: flex;
+  margin-top: 21px;
+  width: 100%;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.revenue-amount {
+  font-size: 20px;
+}
+.revenue-period {
+  margin-top: 18px;
+}
+.refund-icon {
+  aspect-ratio: 1.89;
+  object-fit: auto;
+  object-position: center;
+  width: 200px;
+  align-self: center;
+  margin-top: 20px;
+}
+.refund-description {
+  margin-top: 33px;
+}
+.commision-block a{
+    background-color: #1EE7A6;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 40px;
+}
+
+        /* ********************************** */
+
+        /* ABOUT */
+
+        .about-grid{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 100px;
+            margin-top: 40px;
+        }
+        @media (min-width: 600px) 
+        {
+            .about-grid { 
+                flex-direction: row;
+            }
+        }
+
+        .about-cards{
+            display: grid;
+            /* justify-items: center; */
+            grid-template-columns: 6fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .about-card{
+            width: 350px;
+            background-color: #15212C;
+            align-content:end;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between
+            /* position: relative; */
+        }
+        .about-card p{
+            font-size: 14px;
+        }
+        .about-card-content{
+            padding: 10px;
+            /* width: 200px; */
+            text-align: left;
+            display: grid;
+            align-content: space-between;
+        }
+        .about-card img{
+            width: 140px;
+            /* position: absolute; */
+            /* top:10%; */
+            /* transform: translate3d(30%,0%,0); */
+        }
+        @media (min-width: 600px) 
+        {
+            .about-cards { grid-template-columns: repeat(2, 3fr); }
+        }
+      
+        /* **************************************************** */
+
+
+        /* company section */
+
+.partners-section {
+    display: flex;
+    flex-direction: column;
+    /* flex-grow: 1; */
+    /* flex-basis: 0; */
+    align-items: center;
+    padding: 0 10%;
+    margin-top: 80px;
+}
+
+.partners-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.partners-wrapper {
+    flex-grow: 1;
+    flex-basis: auto;
+}
+
+.partners-grid {
+    gap: 20px;
+    display: flex;
+}
+
+.partner-card {
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+    background-color: #15212c;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+    padding: 19px 19px 80px;
+}
+
+.partner-logo-wrapper {
+    border-radius: 10px;
+    background-color: #001c2d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px 19px;
+}
+
+.partner-logo {
+    aspect-ratio: 4.35;
+    object-fit: auto;
+    object-position: center;
+    width: 269px;
+}
+
+.partner-name {
+    color: #fff;
+    text-align: center;
+    align-self: center;
+    margin-top: 27px;
+    font: 700 40px Roboto, sans-serif;
+}
+
+.partner-description {
+    color: #fff;
+    text-align: center;
+    margin-top: 21px;
+    font: 400 16px Roboto, sans-serif;
+}
+
+.view-all-button {
+    border-radius: 10px;
+    background-color: #1ee7a6;
+    align-self: center;
+    width: 250px;
+    max-width: 100%;
+    color: #001c2d;
+    text-decoration: none;
+    /* margin: 30px 0 0 65px; */
+    margin: 40px 0px;
+    text-align: center;
+    padding: 26px 60px;
+    font: 500 20px Roboto, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .partners-section {
+        max-width: 100%;
+    }
+
+    .partners-container {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .partners-wrapper {
+        max-width: 100%;
+    }
+
+    .partners-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .partner-card {
+        margin-top: 9px;
+    }
+
+    .view-all-button {
+        padding: 16px 10px;
+    }
+}
+        /* ************************************* */
+
+        /* FAQ */
+
+        .faq-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        padding:20px 10%;
+        padding-bottom: 60px;
+        margin-bottom: 40px;
+        }
+    .faq-container > .commision-blog-float-icon{
+        width: 400px;
+    }
+.faq-title {
+  text-align: center;
+  align-self: center;
+  font: 700 50px Roboto, sans-serif;
+}
+@media (max-width: 991px) {
+  .faq-title {
+    max-width: 100%;
+    font-size: 40px;
+  }
+}
+.faq-subtitle {
+  text-align: center;
+  align-self: center;
+  margin-top: 36px;
+  font: 400 20px Roboto, sans-serif;
+}
+.faq-item {
+  border-radius: 10px;
+  background-color: #15212c;
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  max-width:800px;
+  flex-direction: column;
+  padding: 18px 10px;
+}
+@media (max-width: 991px) {
+  .faq-item {
+    max-width: 100%;
+  }
+}
+.faq-question {
+  font: 700 20px Roboto, sans-serif;
+}
+@media (max-width: 991px) {
+  .faq-question {
+    max-width: 100%;
+  }
+}
+.faq-answer {
+  margin-top: 13px;
+  font: 400 14px Roboto, sans-serif;
+}
+@media (max-width: 991px) {
+  .faq-answer {
+    max-width: 100%;
+  }
+}
+.bold-text {
+  font-weight: 700;
+  font-size: 16px;
+}
+.contact-info {
+  font: 400 14px Roboto, sans-serif;
+}
+.contact-info-bold {
+  font-weight: 700;
+  font-size: 12px;
+}
+.contact-info-regular {
+  font-size: 12px;
+}
+        
+        /* *************************************** */
+
+        /* contact */
+        .contact-items{
+            display: flex;
+        }
+        .contact-logo img{
+            width: 500px;
+        }
+        .contact-heading{
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .contact-form {
+            display: flex;
+            max-width: 536px;
+            flex-direction: column;
+            padding: 0 20px;
+        }
+
+        .form-container {
+            width: 100%;
+        }
+
+        @media (max-width: 991px) {
+            .form-container {
+                max-width: 100%;
+            }
+        }
+
+        .form-row {
+            gap: 20px;
+            display: flex;
+        }
+
+        @media (max-width: 991px) {
+            .form-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+        }
+
+        .form-column {
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            width: 50%;
+            margin-left: 0;
+        }
+
+        @media (max-width: 991px) {
+            .form-column {
+                width: 100%;
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        @media (max-width: 991px) {
+            .contact-info {
+                margin-top: 24px;
+            }
+        }
+
+        .contact-title {
+            font: 700 24px Roboto, sans-serif;
+        }
+
+        .mail-label {
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 60px;
+            font: 8px Roboto, sans-serif;
+        }
+
+        @media (max-width: 991px) {
+            .mail-label {
+                margin-top: 40px;
+            }
+        }
+
+        .mail-address {
+            margin-top: 7px;
+            font: 12px Roboto, sans-serif;
+        }
+
+        .divider {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-top: 9px;
+        }
+
+        .subject-column {
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .subject-column {
+                width: 100%;
+            }
+        }
+
+        .subject-container {
+            display: flex;
+            margin-top: 91px;
+            flex-grow: 1;
+            flex-direction: column;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 991px) {
+            .subject-container {
+                margin-top: 40px;
+                white-space: initial;
+            }
+        }
+
+        .subject-label {
+            font-family: Roboto, sans-serif;
+        }
+
+        .message-label {
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 45px;
+            width: 100%;
+            font: 400 12px Roboto, sans-serif;
+        }
+
+        @media (max-width: 991px) {
+            .message-label {
+                max-width: 100%;
+                margin-top: 40px;
+            }
+        }
+
+        .checkbox-container {
+            align-self: start;
+            display: flex;
+            margin-top: 20px;
+            gap: 10px;
+            font-size: 12px;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .checkbox-input {
+            aspect-ratio: 1;
+            object-fit: auto;
+            object-position: center;
+            width: 18px;
+            border-radius: 5px;
+            border: 1px solid #1ee7a6;
+        }
+
+        .checkbox-label {
+            font-family: Roboto, sans-serif;
+            flex-grow: 1;
+            flex-basis: auto;
+            margin: auto 0;
+        }
+
+        .submit-button {
+            border-radius: 10px;
+            background-color: #1ee7a6;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 100%;
+            color: #001c2d;
+            white-space: nowrap;
+            padding: 15px 6px;
+            font: 500 20px Roboto, sans-serif;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .submit-button {
+                white-space: initial;
+                padding: 20px;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .subject-input,
+        .message-input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            font-family: Roboto, sans-serif;
+            font-size: 12px;
+            padding: 5px 0;
+            margin-top: 5px;
+        }
+
+        .message-input {
+            height: 100px;
+            resize: vertical;
+            resize:inherit;
+        }
+
+        .message-input::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .message-input::-webkit-scrollbar-thumb {
+      background-color: #145999; 
+      border-radius: 6px; 
+      border: 3px solid transparent; 
+      background-clip: content-box; 
+    }
+
+    .message-input::-webkit-scrollbar-thumb:hover {
+      background-color: #15212C; 
+    }
+
+    .message-input::-webkit-scrollbar-track {
+      background: #15212C; 
+      border-radius: 6px; 
+    }
+        /* ****************************************** */
+    </style>
+        
+          <main class="main-content">
+            <div class="banner">
+                <div class="banner-top">
+                    <img src="{{ url_for('static', filename='/img/rocket.png') }}" alt="" srcset="">
+                    <div class="banner-content">
+                        <h1>START PROMOTING MOST EXCLUSIVE<br/>CASINO UP TO 40% REVENUE SHARE</h1>
+                        <h3>Joining the affiliate program at rolletto.com will let you earn money just by promoting our eye-catching casino that players will absolutely love from first sight!</h3>
+                    </div>
+                    <img src="{{ url_for('static', filename='/img/heart.png') }} " alt="" srcset="">
+
+                </div>
+                <div class="banner-bottom">
+                    <div class="bottom-left">
+                        <img src="{{ url_for('static', filename='/img/diamond.png') }} " alt="" srcset="">
+                    </div>
+                    <div class="bottom-center">
+                        <img src="{{ url_for('static', filename='/img/gitft.png') }}" alt="" srcset="">
+                        <a href="#">become partner</a>
+                    </div>
+                    <div class="bottom-right">
+                        <img src="{{ url_for('static', filename='/img/coin.png') }}" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+            <div class="commision-block">
+                <img class="commision-blog-float-icon" src="{{ url_for('static', filename='/img/pill.svg') }}" alt="" srcset="">
+                <div class="commision-content">
+                    <h2>COMMISSIONS</h2>
+                    <h6>WHY WE ARE A TRUSTED PARTNER</h6>
+                    <p>We want to make sure our affiliates become our life long partners, that can count on stability of their revenue stream, even if they decide to stop promoting our brand. We know the main reason you would participate in an affiliate program is to earn a high rate of commission. That is why we offer you a chance to earn up to 50% commission each month.</p>
+                </div>
+                <div class="commision-cards">
+                    <div class="commision-cards-icon">
+
+                        <img class="" src="{{ url_for('static', filename='/img/img.svg') }}" alt="" srcset="">
+                    </div>
+                    <section class="revenue-card">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f64235c1d2a1389e894f91b353fbfba57af66f4e6f015a7642544736095fa555?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Revenue icon" class="revenue-icon" />
+                        <div class="revenue-details">
+                          <h2 class="revenue-amount">€5.000 - € 10 000</h2>
+                          <p class="revenue-period">Net Revenue / Month</p>
+                          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/72015250be6db9e90c082710c2935438ceb550753c33d0062b8a0cd1c1ee3924?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Refund icon" class="refund-icon" />
+                          <p class="refund-description">
+                            Refund of money <br /> to a partner
+                          </p>
+                        </div>
+                      </section>
+                    <section class="revenue-card">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f64235c1d2a1389e894f91b353fbfba57af66f4e6f015a7642544736095fa555?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Revenue icon" class="revenue-icon" />
+                        <div class="revenue-details">
+                          <h2 class="revenue-amount">€5.000 - € 10 000</h2>
+                          <p class="revenue-period">Net Revenue / Month</p>
+                          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/72015250be6db9e90c082710c2935438ceb550753c33d0062b8a0cd1c1ee3924?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Refund icon" class="refund-icon" />
+                          <p class="refund-description">
+                            Refund of money <br /> to a partner
+                          </p>
+                        </div>
+                      </section>
+                    <section class="revenue-card">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f64235c1d2a1389e894f91b353fbfba57af66f4e6f015a7642544736095fa555?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Revenue icon" class="revenue-icon" />
+                        <div class="revenue-details">
+                          <h2 class="revenue-amount">€5.000 - € 10 000</h2>
+                          <p class="revenue-period">Net Revenue / Month</p>
+                          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/72015250be6db9e90c082710c2935438ceb550753c33d0062b8a0cd1c1ee3924?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Refund icon" class="refund-icon" />
+                          <p class="refund-description">
+                            Refund of money <br /> to a partner
+                          </p>
+                        </div>
+                      </section>
+                    <section class="revenue-card">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f64235c1d2a1389e894f91b353fbfba57af66f4e6f015a7642544736095fa555?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Revenue icon" class="revenue-icon" />
+                        <div class="revenue-details">
+                          <h2 class="revenue-amount">€5.000 - € 10 000</h2>
+                          <p class="revenue-period">Net Revenue / Month</p>
+                          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/72015250be6db9e90c082710c2935438ceb550753c33d0062b8a0cd1c1ee3924?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Refund icon" class="refund-icon" />
+                          <p class="refund-description">
+                            Refund of money <br /> to a partner
+                          </p>
+                        </div>
+                      </section>
+                    <section class="revenue-card">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f64235c1d2a1389e894f91b353fbfba57af66f4e6f015a7642544736095fa555?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Revenue icon" class="revenue-icon" />
+                        <div class="revenue-details">
+                          <h2 class="revenue-amount">€5.000 - € 10 000</h2>
+                          <p class="revenue-period">Net Revenue / Month</p>
+                          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/72015250be6db9e90c082710c2935438ceb550753c33d0062b8a0cd1c1ee3924?apiKey=cb5b1c6924d344aa9fb46935b4465878&" alt="Refund icon" class="refund-icon" />
+                          <p class="refund-description">
+                            Refund of money <br /> to a partner
+                          </p>
+                        </div>
+                      </section>
+                </div>
+                <a href="#">become a partner</a>
+            </div>
+           <div class="about commision-block">
+            <img class="commision-blog-float-icon" src="{{ url_for('static', filename='/img/icecube.svg') }}" alt="" srcset="">
+
+                <div class="commision-content">
+                    <h2>ABOUT OUR PRODUCTS</h2>
+                    <p>Using the latest technology, both the front end and back end pages load at speeds that leave rivals in the dust. And no matter what statistics, data, or information you are looking for, it is always right at your fingertips as the entire system is always on one screen.</p>
+                </div>
+                <div class="about-grid">
+                    <img src="{{ url_for('static', filename='/img/ring.png') }}" alt="" srcset="">
+                    <div class="about-cards">
+                        <div class="about-card">
+                            <div class="about-card-content">
+                                <h2>casino</h2>
+                                <p>Explore 6000 different casino games from top providers with highest RTP</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='/img/casino.svg') }}" alt="" srcset="">
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-content">
+                                <h2>casino</h2>
+                                <p>Explore 6000 different casino games from top providers with highest RTP</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='/img/ball.svg') }}" alt="" srcset="">
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-content">
+                                <h2>casino</h2>
+                                <p>Explore 6000 different casino games from top providers with highest RTP</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='/img/roullet.svg') }}" alt="" srcset="">
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-content">
+                                <h2>casino</h2>
+                                <p>Explore 6000 different casino games from top providers with highest RTP</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='/img/joystick.svg') }}" alt="" srcset="">
+                        </div>
+                        
+                    </div>
+                </div>
+           </div>
+           <section class="commision-block partners-section">
+            <img class="commision-blog-float-icon-left" src="{{ url_for('static', filename='/img/coin.svg') }}" alt="" srcset="">
+            <div class="partners-container">
+                <div class="partners-wrapper">
+                    <div class="partners-grid">
+                        <article class="partner-card">
+                            <div class="partner-logo-wrapper">
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dbb3967d17bad3738a600d47b562628248c03708afeadebc948ee720961a2c08?apiKey=cb5b1c6924d344aa9fb46935b4465878&" class="partner-logo" alt="Game scope logo" />
+                            </div>
+                            <h2 class="partner-name">Game scope</h2>
+                            <p class="partner-description">
+                                Having been in the gambling industry for years, we can easily identify a great casino. We came across Rolleto just the other day and loved everything about it. Besides, the team behind it knows the value of great partnerships, and so do we. As Gamblescope, we look forward to a long-term collaboration.
+                            </p>
+                        </article>
+                        <article class="partner-card">
+                            <div class="partner-logo-wrapper">
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4523150c590a5d37bf3c996225bf778b6689dfd1992381e48e7f7b3bce577b79?apiKey=cb5b1c6924d344aa9fb46935b4465878&" class="partner-logo" alt="Game scope logo" />
+                            </div>
+                            <h2 class="partner-name">Game scope</h2>
+                            <p class="partner-description">
+                                Having been in the gambling industry for years, we can easily identify a great casino. We came across Rolleto just the other day and loved everything about it. Besides, the team behind it knows the value of great partnerships, and so do we. As Gamblescope, we look forward to a long-term collaboration.
+                            </p>
+                        </article>
+                        <article class="partner-card">
+                            <div class="partner-logo-wrapper">
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/35c40bca20126b4658c352ad9400cfc501fb70f53deee1c6660a5b4da18a0792?apiKey=cb5b1c6924d344aa9fb46935b4465878&" class="partner-logo" alt="Game scope logo" />
+                            </div>
+                            <h2 class="partner-name">Game scope</h2>
+                            <p class="partner-description">
+                                Having been in the gambling industry for years, we can easily identify a great casino. We came across Rolleto just the other day and loved everything about it. Besides, the team behind it knows the value of great partnerships, and so do we. As Gamblescope, we look forward to a long-term collaboration.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="view-all-button">View all</a>
+        </section>
+        <section class="commision-block faq-container">
+            <img class="commision-blog-float-icon" src="{{ url_for('static', filename='/img/ufo.svg') }}" alt="" srcset="">
+            <h1 class="faq-title">CUSTOMER SUPPORT</h1>
+            <h2 class="faq-subtitle">FREQUENTLY ASKED QUESTIONS</h2>
+            
+            <article class="faq-item">
+              <h3 class="faq-question">What is ZoloBet Affiliates System?</h3>
+              <p class="faq-answer">ZoloBet Affiliates is a program where we give you the opportunity to earn money every month simply by giving us the chance to welcome more players through our virtual doors. <br /> Do you have social channels, groups, or gambling-related websites? Then we will be happy to have you around. We sincerely appreciate your interest and desire to collaborate with us.</p>
+            </article>
+            
+            <article class="faq-item">
+              <h3 class="faq-question">How can I become a ZoloBet affiliate partner?</h3>
+              <div class="faq-answer">
+                <p>Simply sign up for our affiliate program, which will not take more than a minute. After that, we will contact you via email within 24 hours (weekends are excluded)</p>
+                <p>After making agreements about our future partnership, you will be able to access your affiliate account and get tracking links.</p>
+                <p class="bold-text">What is a tracking link?</p>
+                <p>The Tracking link redirects players to Mystake platform. When players register through your link, the system tracks their activities and calculates your commissions.</p>
+                <p>You can use link shorteners such as bitly.com, tinyurl.com, linktr.ee and others. It will not damage the tracking link.</p>
+                <p class="bold-text">Can I have streaming money?</p>
+                <p>Do you have Tiktok, Instagram or any other channels where you have live streams? Then sure. You can request non-withdrawable playing funds for mini-games and sports betting.</p>
+              </div>
+            </article>
+            
+            <article class="faq-item">
+              <h3 class="faq-question">What is ZoloBet Affiliates System?</h3>
+              <div class="faq-answer">
+                <p>The commission rate is determined by the country, the number of players you bring in, the type of traffic source, and other factors.</p>
+                <p>We offer industry-leading commissions to our top affiliates.</p>
+                <p>Revenue share - the percentage of net revenue we get from the players you invite. The revenue share varies from 35% to 50%.</p>
+                <p>CPA (cost per acquisition) - a commission based on first-time deposits made by each user. A common type of CPA is qualified according to the amount of first deposit. We have fixed CPA and first deposit CPA tiers.</p>
+                <p>Hybrid deal - mix of revenue share and CPA.</p>
+              </div>
+            </article>
+            
+            <article class="faq-item">
+              <h3 class="faq-question">How do you calculate my commission?</h3>
+              <div class="faq-answer">
+                <p>Your revenue share is a certain percentage of net gaming revenue generated from your players. Net Gaming Revenue = (bets - wins – bonuses-admin fee)</p>
+                <p>CPA is calculated according to the number of first deposits (FTD). CPA has a baseline requirement (The minimum deposit amount).</p>
+              </div>
+            </article>
+            
+            <article class="faq-item">
+              <h3 class="faq-question">How often do I get paid?</h3>
+              <p class="contact-info">
+                <span class="contact-info-bold">ZoloBet</span>
+                <span class="contact-info-regular">TST@info.com</span>
+              </p>
+            </article>
+          </section>
+
+          <section class="contact-section commision-block">
+            <div class="contact-heading">
+                <h2>CONTACT</h2>
+            </div>
+            <div class="contact-items">
+                <div class="contact-logo">
+                    <img src="{{ url_for('static', filename='/img/contact.svg') }}" alt="" srcset="">
+                </div>
+                <section class="contact-form">
+                    <div class="form-container">
+                        <div class="form-row">
+                          
+                            <div class="subject-column">
+                                <div class="subject-container">
+                                    <label for="mail-input" class="subject-label">MAIL</label>
+                                    <input type="email" id="mail-input" class="subject-input" aria-label="Enter subject" required>
+                                </div>
+                            </div>
+                            <div class="subject-column">
+                                <div class="subject-container">
+                                    <label for="subject-input" class="subject-label">Subject</label>
+                                    <input type="text" id="subject-input" class="subject-input" aria-label="Enter subject">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form>
+                        <label for="message-input" class="message-label">Message</label>
+                        <textarea id="message-input" style="height: 30px;" class="message-input" aria-label="Enter your message"></textarea>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="promo-checkbox" class="checkbox-input">
+                            <label for="promo-checkbox" class="checkbox-label">I want to receive promos</label>
+                        </div>
+                        <!-- <button type="submit" class="submit-button">Send</button> -->
+                         <input type="submit" class="submit-button" value="Submit">
+                    </form>
+                </section>
+            </div>
+          </section>
+          </main>
+        
+</body>
+</html>
