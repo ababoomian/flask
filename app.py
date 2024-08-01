@@ -1,35 +1,10 @@
-from flask import Flask, render_template
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-from flask_sqlalchemy import SQLAlchemy
-import api  
+from flask import Flask
 
-app = api.app  
+app = Flask(__name__)
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-
-class TaskModel(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    task = db.Column(db.String(200), nullable=False)
-
-
-admin = Admin(app, name='Admin Panel', template_mode='bootstrap3')
-admin.add_view(ModelView(TaskModel, db.session))
-
-
-print(f"Flask app name: {__name__}")
-print(f"App root path: {app.root_path}")
-
-@app.route('/home')
-def home():
-    return render_template('index.html')
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.debug = True  
-    app.run()
+    app.run(host='0.0.0.0')
