@@ -1,18 +1,11 @@
-FROM python:3.9-alpine3.13
+FROM python:3.9-slim
 
-ENV PYTHONUNBUFFERED 1
+WORKDIR /app
 
-COPY ./pong ./pong
+COPY requirements.txt .
 
-WORKDIR /pong
-EXPOSE 8000
+RUN pip install -r requirements.txt
 
-RUN apk add --update --no-cache
+COPY . .
 
-RUN python -m venv /py && \
-    /py/bin/pip install --upgrade pip && \
-    /py/bin/pip install -r requirements.txt
-
-ENV PATH="/scripts:/py/bin:$PATH"
-
-VOLUME /pong
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]

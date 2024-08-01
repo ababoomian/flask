@@ -1,5 +1,2 @@
-
-template-render==0.1.0
-Flask==3.0.0
-flask_admin==1.6.0
-sqlalchemy==2.0.31
+Flask==3.0.3
+gunicorn==22.0.0
