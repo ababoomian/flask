@@ -1,9 +1,12 @@
 FROM        debian:buster
 
 RUN         apt update &&\
-            apt upgrade -y
+            apt upgrade -y &&\
+            apt install -y nginx openssl
 
 WORKDIR	    /etc/nginx
+
+RUN         mkdir -p /etc/nginx/ssl
 
 RUN         mkdir -p /run/nginx
 
