@@ -10,14 +10,14 @@ services:
     networks:
       - mynetwork
 
-  nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
-    ports:
-      - "80:80"
-    networks:
-      - mynetwork
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.nginx
+  #   ports:
+  #     - "80:80"
+  #   networks:
+  #     - mynetwork
 
 networks:
   mynetwork:
